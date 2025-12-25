@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Beautiful sunset in Tehran",
+    "country": "Iran",
+    "state": "Tehran",
+    "date": "2024-01-15",
+    "note": "Amazing sunset from our hotel",
+    "filename": "tehran-sunset.jpg"
+  },
+  {
+    "name": "Isfahan city center",
+    "country": "Iran",
+    "state": "Isfahan",
+    "date": "2024-02-20",
+    "note": "Historic square",
+    "filename": "isfahan-square.jpg"
+  },
+  {
+    "name": "Eiffel Tower",
+    "country": "France",
+    "city": "Paris",
+    "date": "2023-06-20",
+    "note": "Our first time in Paris",
+    "filename": "paris-eiffel.jpg"
+  },
+  {
+    "name": "Notre Dame",
+    "country": "France",
+    "city": "Paris",
+    "date": "2023-06-21",
+    "note": "Beautiful cathedral",
+    "filename": "paris-notre-dame.jpg"
+  },
+  {
+    "name": "Tokyo streets",
+    "country": "Japan",
+    "city": "Tokyo",
+    "date": "2023-09-10",
+    "note": "Vibrant city life",
+    "filename": "tokyo-streets.jpg"
+  }
+]
+
