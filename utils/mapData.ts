@@ -1,4 +1,4 @@
-import { Place } from '@/types';
+import { type Place } from '@/types';
 
 // Country name normalization - maps map data names to user-friendly names
 export const countryNameMap: Record<string, string> = {
@@ -47,17 +47,41 @@ export const countryNameMap: Record<string, string> = {
   'Norway': 'Norway',
   'Denmark': 'Denmark',
   'Finland': 'Finland',
-  'Ireland': 'Ireland',
+  'Ireland': 'Ireland'
 };
 
 // Iran provinces/states (simplified list - you can expand this)
 export const iranProvinces = [
-  'Tehran', 'Isfahan', 'Fars', 'Khuzestan', 'East Azerbaijan',
-  'West Azerbaijan', 'Kerman', 'Sistan and Baluchestan', 'Khorasan Razavi',
-  'Mazandaran', 'Gilan', 'Golestan', 'Kurdistan', 'Lorestan', 'Hormozgan',
-  'Bushehr', 'Chaharmahal and Bakhtiari', 'Kohgiluyeh and Boyer-Ahmad',
-  'Yazd', 'Qom', 'Qazvin', 'Zanjan', 'Ardabil', 'Semnan', 'Markazi',
-  'Hamadan', 'Kermanshah', 'Ilam', 'North Khorasan', 'South Khorasan',
+  'Tehran',
+  'Isfahan',
+  'Fars',
+  'Khuzestan',
+  'East Azerbaijan',
+  'West Azerbaijan',
+  'Kerman',
+  'Sistan and Baluchestan',
+  'Khorasan Razavi',
+  'Mazandaran',
+  'Gilan',
+  'Golestan',
+  'Kurdistan',
+  'Lorestan',
+  'Hormozgan',
+  'Bushehr',
+  'Chaharmahal and Bakhtiari',
+  'Kohgiluyeh and Boyer-Ahmad',
+  'Yazd',
+  'Qom',
+  'Qazvin',
+  'Zanjan',
+  'Ardabil',
+  'Semnan',
+  'Markazi',
+  'Hamadan',
+  'Kermanshah',
+  'Ilam',
+  'North Khorasan',
+  'South Khorasan',
   'Alborz'
 ];
 
@@ -127,4 +151,3 @@ export function getIranStatesWithImages(places: Place[]): Set<string> {
   });
   return states;
 }
-

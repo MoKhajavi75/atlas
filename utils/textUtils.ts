@@ -18,6 +18,3 @@ export function getFontFamily(text: string): string {
 export function getTextDirection(text: string): 'rtl' | 'ltr' {
   return isRTL(text) ? 'rtl' : 'ltr';
 }
-
-
-

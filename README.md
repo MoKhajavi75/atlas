@@ -16,11 +16,13 @@ A beautiful, private web application to view and organize your travel photos by 
 ## Setup
 
 1. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 2. Create the images directory:
+
 ```bash
 mkdir images
 ```
@@ -50,6 +52,7 @@ mkdir images
 4. Copy your image files to the `images` directory (matching the filenames in metadata.json). The images directory is gitignored to keep your photos private.
 
 5. Run the development server:
+
 ```bash
 pnpm dev
 ```
@@ -59,6 +62,7 @@ pnpm dev
 ## Image Metadata Format
 
 Each image in `metadata.json` should have:
+
 - `name`: Display name for the image
 - `country`: Country name (e.g., "Iran", "France")
 - `state`: (Optional) State/province name - **only used for Iran**
@@ -68,6 +72,7 @@ Each image in `metadata.json` should have:
 - `filename`: Name of the image file in the images directory
 
 **Note:**
+
 - For **Iran**: Use `state` field (e.g., "Tehran", "Isfahan")
 - For **other countries**: Use `city` field (e.g., "Paris", "Tokyo")
 - You can have multiple images for the same place (same country+state or country+city)
@@ -83,4 +88,3 @@ Each image in `metadata.json` should have:
 - Click on any photo in the modal to view it in full screen
 - Countries without images appear in gray and are not clickable (except Iran, which is always clickable to show states)
 - **Multiple Images**: You can have multiple images for the same place - they'll all be grouped together
-

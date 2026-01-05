@@ -2,12 +2,17 @@
   "name": "atlas",
   "version": "1.0.0",
   "description": "A private map of our travels, told through memories and moments 🗺️✨",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --config eslint.config.js --cache",
+    "prettier": "prettier -c . --config .prettierrc.json",
+    "format": "prettier -w . --config .prettierrc.json",
+    "check-types": "tsc --project tsconfig.json",
+    "prepare": "[ -n \"$CI\" ] || husky"
   },
   "engines": {
     "node": ">=24",
@@ -18,16 +23,27 @@
     "url": "git@github.com:MoKhajavi75/atlas.git"
   },
   "dependencies": {
-    "next": "^14.2.0",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "react-simple-maps": "^3.0.0",
-    "topojson-client": "^3.0.1"
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-simple-maps": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.0",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "typescript": "^5.5.0"
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
+    "@eslint/js": "^9.39.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@types/node": "^24",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.1",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "husky": "^9.1.7",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.51.0"
   }
 }

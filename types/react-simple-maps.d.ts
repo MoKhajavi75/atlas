@@ -1,7 +1,10 @@
-declare module 'react-simple-maps' {
-  import { ReactNode } from 'react';
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-  export interface Geography {
+declare module 'react-simple-maps' {
+  import { type ReactNode } from 'react';
+
+  export type Geography = {
     rsmKey: string;
     properties: {
       NAME?: string;
@@ -9,17 +12,16 @@ declare module 'react-simple-maps' {
       [key: string]: any;
     };
     [key: string]: any;
-  }
+  };
 
-  export interface GeographiesProps {
+  export type GeographiesProps = {
     geography: string | object;
     children: (args: { geographies: Geography[] }) => ReactNode;
     onError?: (error: Error) => void;
-  }
+  };
 
   export const Geographies: React.FC<GeographiesProps>;
   export const Geography: React.FC<any>;
   export const ComposableMap: React.FC<any>;
   export const ZoomableGroup: React.FC<any>;
 }
-

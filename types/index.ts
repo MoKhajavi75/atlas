@@ -1,4 +1,4 @@
-export interface TravelImage {
+export type TravelImage = {
   name: string;
   country: string;
   state?: string; // Only for Iran
@@ -6,13 +6,12 @@ export interface TravelImage {
   date: string;
   note?: string;
   filename: string;
-}
+};
 
-export interface Place {
+export type Place = {
   country: string;
   state?: string; // Only for Iran
   city?: string; // For non-Iran countries
   images: TravelImage[];
   hasImages: boolean;
-}
-
+};

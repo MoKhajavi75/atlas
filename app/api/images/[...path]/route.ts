@@ -1,15 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { NextResponse, type NextRequest } from 'next/server';
 
 const IMAGES_DIR = path.join(process.cwd(), 'images');
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { path: string[] } }
-) {
+export async function GET(_: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
-    const filePath = path.join(IMAGES_DIR, ...params.path);
+    const { path: pathArray } = await params;
+    const filePath = path.join(IMAGES_DIR, ...pathArray);
 
     // Security: ensure the file is within the images directory
     const resolvedPath = path.resolve(filePath);
@@ -31,19 +29,16 @@ export async function GET(
       '.jpeg': 'image/jpeg',
       '.png': 'image/png',
       '.gif': 'image/gif',
-      '.webp': 'image/webp',
+      '.webp': 'image/webp'
     };
 
     return new NextResponse(fileBuffer, {
       headers: {
-        'Content-Type': contentType[ext] || 'application/octet-stream',
-      },
+        'Content-Type': contentType[ext] || 'application/octet-stream'
+      }
     });
   } catch (error) {
     console.error('Error serving image:', error);
     return NextResponse.json({ error: 'Failed to serve image' }, { status: 500 });
   }
 }
-
-
-

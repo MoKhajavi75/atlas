@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import { getPlacesByLocation } from '@/utils/images';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
@@ -10,6 +10,3 @@ export async function GET() {
     return NextResponse.json({ error: 'Failed to fetch places' }, { status: 500 });
   }
 }
-
-
-

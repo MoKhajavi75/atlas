@@ -69,12 +69,9 @@ export const countryFlags: Record<string, string> = {
   'North Korea': '🇰🇵',
   'Taiwan': '🇹🇼',
   'Hong Kong': '🇭🇰',
-  'Macau': '🇲🇴',
+  'Macau': '🇲🇴'
 };
 
 export function getCountryFlag(country: string): string {
   return countryFlags[country] || '🌍';
 }
-
-
-

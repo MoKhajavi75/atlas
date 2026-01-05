@@ -1,6 +1,6 @@
-import { TravelImage, Place } from '@/types';
 import fs from 'fs';
 import path from 'path';
+import { type Place, type TravelImage } from '@/types';
 
 const IMAGES_DIR = path.join(process.cwd(), 'images');
 const METADATA_FILE = path.join(IMAGES_DIR, 'metadata.json');
@@ -22,7 +22,7 @@ export function getPlacesByLocation(): Place[] {
   const images = getImageMetadata();
   const placeMap = new Map<string, Place>();
 
-  images.forEach((image) => {
+  images.forEach(image => {
     // For Iran: use country-state as key
     // For others: use country-city as key (or just country if no city)
     let key: string;
@@ -40,11 +40,11 @@ export function getPlacesByLocation(): Place[] {
         state: image.state,
         city: image.city,
         images: [],
-        hasImages: true,
+        hasImages: true
       });
     }
 
-    placeMap.get(key)!.images.push(image);
+    placeMap.get(key)?.images.push(image);
   });
 
   return Array.from(placeMap.values()).sort((a, b) => {
@@ -53,10 +53,10 @@ export function getPlacesByLocation(): Place[] {
     }
     // For Iran, sort by state
     if (a.country === 'Iran') {
-      return (a.state || '').localeCompare(b.state || '');
+      return (a.state ?? '').localeCompare(b.state ?? '');
     }
     // For others, sort by city
-    return (a.city || '').localeCompare(b.city || '');
+    return (a.city ?? '').localeCompare(b.city ?? '');
   });
 }
 
@@ -64,4 +64,3 @@ export function getPlacesByLocation(): Place[] {
 export function getImagePath(filename: string): string {
   return `/images/${filename}`;
 }
-
