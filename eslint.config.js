@@ -72,7 +72,8 @@ export default defineConfig(
       'node_modules',
       'pnpm-lock.yaml',
       'tsconfig.tsbuildinfo',
-      'eslint.config.js'
+      'eslint.config.js',
+      'public/data/*.json'
     ]
   }
 );
