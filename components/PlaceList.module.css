@@ -85,11 +85,11 @@
 
 .badge {
   background: var(--visited);
-  color: white;
+  color: rgb(0, 43, 3);
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: bold;
   margin-left: 1rem;
 }
 

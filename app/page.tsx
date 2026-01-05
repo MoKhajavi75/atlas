@@ -1,13 +1,18 @@
 'use client';
 
-import CitiesMap from '@/components/CitiesMap';
 import ImageGallery from '@/components/ImageGallery';
-import IranMap from '@/components/IranMap';
 import PlaceList from '@/components/PlaceList';
-import WorldMap from '@/components/WorldMap';
 import { type Place } from '@/types';
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const WorldMap = dynamic(() => import('@/components/WorldMap'), { ssr: false });
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const IranMap = dynamic(() => import('@/components/IranMap'), { ssr: false });
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const CitiesMap = dynamic(() => import('@/components/CitiesMap'), { ssr: false });
 
 export default function Home() {
   const [places, setPlaces] = useState<Place[]>([]);
@@ -89,6 +94,7 @@ export default function Home() {
                   onBack={() => {
                     setSelectedPlace(null);
                   }}
+                  hoveredPlace={hoveredPlace}
                 />
               ) : showCities && selectedCountry ? (
                 <CitiesMap

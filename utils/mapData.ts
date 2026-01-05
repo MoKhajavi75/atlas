@@ -50,40 +50,104 @@ export const countryNameMap: Record<string, string> = {
   'Ireland': 'Ireland'
 };
 
-// Iran provinces/states (simplified list - you can expand this)
-export const iranProvinces = [
-  'Tehran',
-  'Isfahan',
-  'Fars',
-  'Khuzestan',
-  'East Azerbaijan',
-  'West Azerbaijan',
-  'Kerman',
-  'Sistan and Baluchestan',
-  'Khorasan Razavi',
-  'Mazandaran',
-  'Gilan',
-  'Golestan',
-  'Kurdistan',
-  'Lorestan',
-  'Hormozgan',
-  'Bushehr',
-  'Chaharmahal and Bakhtiari',
-  'Kohgiluyeh and Boyer-Ahmad',
-  'Yazd',
-  'Qom',
-  'Qazvin',
-  'Zanjan',
-  'Ardabil',
-  'Semnan',
-  'Markazi',
-  'Hamadan',
-  'Kermanshah',
-  'Ilam',
-  'North Khorasan',
-  'South Khorasan',
-  'Alborz'
-];
+// Province name mapping - maps GeoJSON province names to our internal names
+export const iranProvinceNameMap: Record<string, string> = {
+  'Tehran': 'Tehran',
+  'Tehrān': 'Tehran',
+  'Isfahan': 'Isfahan',
+  'Esfahan': 'Isfahan',
+  'Eşfahān': 'Isfahan',
+  'Fars': 'Fars',
+  'Fārs': 'Fars',
+  'Khuzestan': 'Khuzestan',
+  'Khūzestān': 'Khuzestan',
+  'East Azerbaijan': 'East Azerbaijan',
+  'Āz̄arbāyjān-e Sharqī': 'East Azerbaijan',
+  'West Azerbaijan': 'West Azerbaijan',
+  'Āz̄arbāyjān-e Gharbī': 'West Azerbaijan',
+  'Kerman': 'Kerman',
+  'Kermān': 'Kerman',
+  'Sistan and Baluchestan': 'Sistan and Baluchestan',
+  'Sīstān va Balūchestān': 'Sistan and Baluchestan',
+  'Khorasan Razavi': 'Khorasan Razavi',
+  'Khorāsān-e Raẕavī': 'Khorasan Razavi',
+  'Mazandaran': 'Mazandaran',
+  'Māzandarān': 'Mazandaran',
+  'Gilan': 'Gilan',
+  'Gīlān': 'Gilan',
+  'Golestan': 'Golestan',
+  'Golestān': 'Golestan',
+  'Kurdistan': 'Kurdistan',
+  'Kordestān': 'Kurdistan',
+  'Lorestan': 'Lorestan',
+  'Lorestān': 'Lorestan',
+  'Hormozgan': 'Hormozgan',
+  'Hormozgān': 'Hormozgan',
+  'Bushehr': 'Bushehr',
+  'Būshehr': 'Bushehr',
+  'Chaharmahal and Bakhtiari': 'Chaharmahal and Bakhtiari',
+  'Chahār Maḩāl va Bakhtīārī': 'Chaharmahal and Bakhtiari',
+  'Kohgiluyeh and Boyer-Ahmad': 'Kohgiluyeh and Boyer-Ahmad',
+  'Kohgīlūyeh va Bowyer Aḩmad': 'Kohgiluyeh and Boyer-Ahmad',
+  'Yazd': 'Yazd',
+  'Qom': 'Qom',
+  'Qazvin': 'Qazvin',
+  'Qazvīn': 'Qazvin',
+  'Zanjan': 'Zanjan',
+  'Zanjān': 'Zanjan',
+  'Ardabil': 'Ardabil',
+  'Ardabīl': 'Ardabil',
+  'Semnan': 'Semnan',
+  'Semnān': 'Semnan',
+  'Markazi': 'Markazi',
+  'Markazī': 'Markazi',
+  'Hamadan': 'Hamadan',
+  'Hamadān': 'Hamadan',
+  'Kermanshah': 'Kermanshah',
+  'Kermānshāh': 'Kermanshah',
+  'Ilam': 'Ilam',
+  'Īlām': 'Ilam',
+  'North Khorasan': 'North Khorasan',
+  'Khorāsān-e Shomālī': 'North Khorasan',
+  'South Khorasan': 'South Khorasan',
+  'Khorāsān-e Jonūbī': 'South Khorasan',
+  'Alborz': 'Alborz',
+  'Alborz Province': 'Alborz'
+};
+
+export function normalizeProvinceName(province: string): string {
+  if (!province) return '';
+  const trimmed = province.trim();
+  return iranProvinceNameMap[trimmed] || trimmed;
+}
+
+export function provincesMatch(mapProvince: string, userProvince: string): boolean {
+  if (!mapProvince || !userProvince) return false;
+
+  const mapLower = mapProvince.trim().toLowerCase();
+  const userLower = userProvince.trim().toLowerCase();
+
+  // Exact match
+  if (mapLower === userLower) return true;
+
+  // Normalize both and check
+  const normalizedMap = normalizeProvinceName(mapProvince).toLowerCase();
+  const normalizedUser = normalizeProvinceName(userProvince).toLowerCase();
+
+  if (normalizedMap === normalizedUser) return true;
+
+  // Check if one contains the other
+  if (normalizedMap.includes(normalizedUser) || normalizedUser.includes(normalizedMap)) {
+    return true;
+  }
+
+  // Also check original strings
+  if (mapLower.includes(userLower) || userLower.includes(mapLower)) {
+    return true;
+  }
+
+  return false;
+}
 
 export function normalizeCountryName(country: string): string {
   if (!country) return '';
@@ -136,18 +200,4 @@ export function getCountryHasImages(mapCountryName: string, places: Place[]): bo
     // Check if country matches
     return countriesMatch(mapCountryName, p.country);
   });
-}
-
-export function getIranStateHasImages(state: string, places: Place[]): boolean {
-  return places.some(p => p.country === 'Iran' && p.state === state);
-}
-
-export function getIranStatesWithImages(places: Place[]): Set<string> {
-  const states = new Set<string>();
-  places.forEach(p => {
-    if (p.country === 'Iran' && p.state) {
-      states.add(p.state);
-    }
-  });
-  return states;
 }

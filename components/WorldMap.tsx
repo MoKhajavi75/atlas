@@ -5,7 +5,7 @@ import { countriesMatch, getCountryHasImages } from '@/utils/mapData';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import styles from './WorldMap.module.css';
 
-const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+const geoUrl = '/data/countries-110m.json';
 
 type WorldMapProps = {
   places: Place[];
