@@ -9,3 +9,4 @@ node_modules
 pnpm-lock.yaml
 tsconfig.tsbuildinfo
 public/data/*.json
+next-env.d.ts
