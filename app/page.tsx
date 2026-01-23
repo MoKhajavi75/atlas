@@ -68,7 +68,9 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <header className={styles.header}>
-        <h1>🗺️ Atlas</h1>
+        <h1>
+          <span className={styles.emoji}>🗺️</span> Atlas
+        </h1>
         <p className={styles.subtitle}>Our Travel Memories</p>
       </header>
 

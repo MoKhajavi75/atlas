@@ -1,3 +1,8 @@
+.emoji {
+  -webkit-text-fill-color: initial;
+  background: none;
+}
+
 .container {
   min-height: 100vh;
   display: flex;
