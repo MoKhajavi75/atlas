@@ -10,7 +10,7 @@ export function isRTL(text: string): boolean {
 // Get appropriate font family based on text direction
 export function getFontFamily(text: string): string {
   return isRTL(text)
-    ? 'Vazir, "Segoe UI", sans-serif'
+    ? 'Vazirmatn, "Segoe UI", sans-serif'
     : '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
 }
 

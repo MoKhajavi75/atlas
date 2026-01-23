@@ -20,12 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang='en'
       className={inter.variable}
     >
-      <head>
-        <link
-          href='https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.3/Vazirmatn-Variable.css'
-          rel='stylesheet'
-        />
-      </head>
       <body>{children}</body>
     </html>
   );

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/vazirmatn/v33.003.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +23,7 @@
   --border: #333333;
   --visited: #4ade80;
   --visited-dark: #22c55e;
-  --font-vazir: 'Vazirmatn VF', sans-serif;
+  --font-vazir: 'Vazirmatn', sans-serif;
 }
 
 body {
@@ -38,5 +46,3 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
 }
-
-/* Vazir font is loaded via CDN in layout.tsx */
