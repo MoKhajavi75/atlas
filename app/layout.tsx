@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Atlas - Our Travel Memories',
+  title: 'Atlas',
   description: 'A private map of our travels'
 };
 
