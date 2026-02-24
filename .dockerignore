@@ -1,0 +1,10 @@
+.git
+.github
+.next
+.husky
+node_modules
+images
+*.log
+.env*
+.eslintcache
+tsconfig.tsbuildinfo
